@@ -17,7 +17,7 @@ const helmet = require('helmet');
 
 const container = require("./container");
 
-container.resolve(function(users, _, admin){
+container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
     mongoose.Promise = global.Promise;
     mongoose.connect("");
     
@@ -25,6 +25,39 @@ container.resolve(function(users, _, admin){
     
     function SetupExpress(){
         const app = express();
+        const server = http.createServer(app);
+        const io = socketIO(server);
+        server.listen(process.env.PORT || 3000, function(){
+            console.log('Listening on port 3000');
+        });
+        ConfigureExpress(app);
         
+        // Setup the router
+        const router = require('express-promise-router')();
+        users.SetRouting(router);
+        admin.SetRouting(router);
+        home.SetRouting(router);
+        group.SetRouting(router);
+        results.SetRouting(router);
+        privatechat.SetRouting(router);
+        profile.SetRouting(router);
+        interests.SetRouting(router);
+        news.SetRouting(router);
+        
+        app.use(router);
+        app.use(function(req, res){
+            res.render('404');
+        });
+    }
+    
+    function ConfigureExpress(app){
+        app.use(compression());
+        app.use(helmet());
+        
+        app.use(express.static('public'));
+        app.use(cookieParser());
+        app.set('view engine', 'ejs');
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({extended: true}));
     }
 });
