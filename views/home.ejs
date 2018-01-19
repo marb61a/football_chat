@@ -12,5 +12,32 @@
     </head>
     <body>
         <%- include partials/navbar.ejs%>
+        
+        <div class="col-md-12">
+            <form action="/results" method="post">
+                <div class="form-group ad-30" style="margin-top:8px;">
+                    <div class="input-group search-style">
+                        <input class="form-control new-search-bar"  name="country" id="search" placeholder="Enter Your Club Name" type="text">
+                        <span class="input-group-btn">
+                            <button class="btn input-btn" type="" id="search-form">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-md-12">
+            <input type="hidden" id="name-user" value="<%= user.username %>">
+            <input type="hidden" id="name-image" value="<%= user.userImage %>">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="row">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
