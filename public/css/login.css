@@ -1,0 +1,46 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-size: 90% 90%;
+    background: #fff !important;
+    color: white !important;
+}
+
+.logo-container {
+    margin-bottom: 5px;
+}
+
+.logo-div a {
+    color: #4aa1f3 !important;
+    text-decoration: none !important;
+}
+
+.reg-div a {
+    color: #4aa1f3 !important;
+    font-size: 18px;
+    text-decoration: none !important;
+    z-index: 1000;
+}
+
+.main {
+    width: 36%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+#main {
+    background: #4aa1f3 !important;
+    border: 1px solid white;
+    height: 100%;
+}
+
+form {
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 10px 5px rgba(0,0,0,0.2);
+    margin-bottom: 50px;
+}
