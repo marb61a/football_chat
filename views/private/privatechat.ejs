@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title><%= title %></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="/uploads/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="/css/style.css">    
+    </head>
+    <body>
+        <%- include ../partials/navbar.ejs %>
+        <div class="col-md-12">
+            <input type="hidden" id="name-user" value="<%= user.username %>">
+            <input type="hidden" id="name-image" value="<%= user.userImage %>">
+            <div class="col-md-12">
+                <div class="chat_container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="front">
+                                        <div class="cover"></div>
+                                        <div class="user cover-img">
+                                            <img src="" class="img-circle" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
