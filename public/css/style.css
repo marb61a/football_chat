@@ -21,3 +21,52 @@ body {
     background-color: #4aa1f3 !important;
 }
 
+.navbar-default .navbar-nav > li > a{
+    color: #fff !important;
+    background-color: #4aa1f3 !important;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #fff !important;
+    background-color: #4aa1f3 !important;
+}
+
+#custom-search-input {
+    background: #e8e6e7 none repeat scroll 0 0;
+    margin: 0;
+    padding:10px;
+}
+
+#custom-search-input .search-query {
+    background: #fff none repeat scroll 0 0 !important;
+    border-radius: 4px;
+    height: 33px;
+    margin-bottom: 0;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+#custom-search-input button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 0 none;
+    border-radius: 3px;
+    color: #666666;
+    left: auto;
+    margin-bottom: 0;
+    margin-top: 7px;
+    padding: 2px 5px;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+}
+
+.card {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    color: #444444;
+}
+
+
+
