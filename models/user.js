@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcrypt-nodejs");
 
 const userSchema = mongoose.Schema({
     username: {type: String, unique: true, default: ''},
@@ -22,7 +23,25 @@ const userSchema = mongoose.Schema({
     }],
     totalRequest: {type: Number, default: 0},
     gender: {type: String, default: ''},
-    country: {type: String, default: ''}
+    country: {type: String, default: ''},
+    mantra: {type: String, default: ''},
+    favNationalTeam: [{
+        teamName: {type: String, default: ''}
+    }],
+    favPlayer: [{
+        playerName: {type: String, default: ''}
+    }],
+    favClub: [{
+        clubName: {type: String}
+    }]
 });
+
+userSchema.methods.encryptPassword = function(password){
+    return bcrypt.hashSync(password, bcrypt.genSaleSync(10), null);
+};
+
+userSchema.methods.validateUserPassword = function(password){
+    return bcrypt.compareSync(password, this.password);    
+};
 
 module.exports = mongoose.model('User', userSchema);
