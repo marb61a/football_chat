@@ -54,6 +54,24 @@ module.exports = function(async, Users, Message, aws, formidable, FriendResult){
                         }
                     );
                 }
+            ], (err, results) => {
+                const result1 = results[0];
+                const result2 = results[1];
+                
+                res.render('user/profile', {
+                    title: 'Sport Chat Profile',
+                    user: req.user,
+                    data: result1,
+                    chat: result2
+                });
+            });
+        },
+        
+        postProfilePage: function(req, res){
+            FriendResult.PostRequest(req, res, '/settings/profile');
+            
+            async.waterfall([
+                
             ]);
         }
     }; 
