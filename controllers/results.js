@@ -58,6 +58,16 @@ module.exports = function(async, Club, Users){
                     chunks: dataChunk
                 });
             });
+        },
+        
+        searchMembers: function(req, res){
+            async.parallel([
+                function(callback){
+                    const regex = new RegExp((req.body.username), 'gi');
+                }    
+            ], (err, results) => {
+                
+            });
         }
     }; 
 };
