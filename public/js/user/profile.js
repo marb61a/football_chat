@@ -26,4 +26,35 @@ $(document).ready(function(){
         
         ShowImage(this);
     });
+    
+    $('#profile').on('click', function() {
+        var username = $('#username').val();
+        var fullname = $('#fullname').val();
+        var country = $('#country').val();
+        var gender = $('#gender').val();
+        var mantra = $('#mantra').val();
+        var upload = $('#add-input').val();
+        var image = $('#user-image').val();
+        
+        var valid = true;
+        
+        if(upload === ''){
+            $('#add-input').val(image);
+        }
+        
+        if(username == '' || fullname == '' || country == '' || gender == '' || mantra == ''){
+            valid = false;
+        }
+    });
+    
 });
+
+function ShowImage(input){
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#show_img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
