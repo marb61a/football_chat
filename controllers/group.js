@@ -31,9 +31,29 @@ module.exports = function(Users, async, Message, FriendResult, Group){
                         {
                             $group:{
                                 "_id":{
-                                    
-                                }
+                                    "last_message_between": {
+                                        $cond: [
+                                            {
+                                                $gt: [
+                                                    {$substr:["$senderName",0,1]},
+                                                    {$substr:["$receiverName",0,1]}    
+                                                ]
+                                            },
+                                            {$concat:["$senderName"," and ","$receiverName"]},
+                                            {$concat:["$receiverName"," and ","$senderName"]}
+                                        ]
+                                    }
+                                }, "body": {$first:"$$ROOT"}
                             }
+                        }, function(err, newResult){
+                            const arr = [
+                                {path: 'body.sender', model: 'User'},
+                                {path: 'body.receiver', model: 'User'}    
+                            ];
+                            
+                            Message.populate(newResult, arr, (err, newResult1) => {
+                                callback(err, newResult1);
+                            });
                         }
                     );
                 }
