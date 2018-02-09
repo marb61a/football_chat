@@ -56,6 +56,35 @@ module.exports = function(Users, async, Message, FriendResult, Group){
                             });
                         }
                     );
+                }, function(callback){
+                    Group.find({})
+                        .populate('sender')
+                        .exec((err, result) => {
+                            callback(err, result);
+                        });
+                }
+            ], (err, results) => {
+                const result1 = results[0];
+                const result2 = results[1];
+                const result3 = results[2];
+                
+                res.render('groupchat/group', {
+                    title: 'Footballkik - Group', 
+                    user:req.user, 
+                    groupName:name, 
+                    data: result1, 
+                    chat:result2, 
+                    groupMsg: result3    
+                });
+            });
+        },
+        
+        groupPostPage: function(req, res){
+            FriendResult.PostRequest(req, res, '/group/'+req.params.name);
+            
+            async.parallel([
+                function(callback){
+                    
                 }
             ]);
         }
