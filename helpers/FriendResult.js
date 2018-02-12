@@ -59,7 +59,35 @@ module.exports = function(async, Users, Message){
                             callback(err, count);
                         });
                     }    
-                }    
+                },
+                
+                //This function is updated for the sender of the friend request when it is accepted by the receiver
+                function(callback){
+                    if(req.body.senderId){
+                        Users.update({
+                            '_id': req.body.senderId,
+                            'friendsList.friendId': {$ne: req.user._id}
+                        }, {
+                            $push:{friendsList: {
+                                friendId: req.user._id,
+                                friendName: req.user.username
+                            }},
+                            $pull:{sentRequest:{
+                                username: req.user.username
+                            }}
+                        }, (err, count) => {
+                            callback(err, count);
+                        });
+                    }
+                },
+                
+                function(callback){
+                    if(req.body.user_Id){
+                        Users.update({
+                            
+                        });
+                    }
+                }
             ]);
         }    
     };
