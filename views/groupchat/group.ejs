@@ -61,11 +61,48 @@
                                                             Online Friends
                                                             <span id="numOfFriends"></span>
                                                         </p>
+                                                        <hr style="margin-top:10px" />
+                                                        <% if(data.friendsList.length > 0) { %>
+                                                            <% _.forEach(data.friendsList, function(value) { %>
+                                                                <div class="friend" hidden>@<%= value.friendName %></div>
+                                                            <% }) %>
+                                                        <% } %>
+                                                        <div class="onlineFriends"></div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-md-6 message_section">
+                            <div class="row">
+                                <div class="new_message_head">
+                                    <div class="pull-left">
+                                        <button class="club_name">
+                                            <%= groupName %>
+                                        </button>
+                                    </div>
+                                    <div class="pull-right"></div>
+                                </div>
+                                <div class="chat_area">
+                                    <ul id="messages" class="list-unstyled">
+                                        <% _.forEach(groupMsg, function(val) { %>
+                                            <% if(groupName === val.name) { %>
+                                                <li class="left">
+                                                    <span class="chat-img1 pull-left">
+                                                        <img src="" class="img-circle" alt="">
+                                                    </span>
+                                                    <div class="chat-body1">
+                                                        <span class="chat-name"><%= val.sender.username %></span>
+                                                       <br>
+                                                       <%= val.body %>
+                                                    </div>
+                                                </li>
+                                            <% } %>
+                                        <% }) %>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
