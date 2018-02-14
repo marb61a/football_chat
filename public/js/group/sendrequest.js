@@ -35,5 +35,39 @@ $(document).ready(function(){
             
             $('#reload').load(location.href + ' #reload');
         });
+        
+        $(document).on('click', '#cancel_friend', function(){
+            var user_Id = $('#user_Id').val();
+            
+            $.ajax({
+                url: '/group/'+room,
+                type: 'POST',
+                data: {
+                    user_Id: user_Id
+                },
+                success: function(){
+                    $(this).parent().eq(1).remove();
+                }
+            });
+            
+            $('#reload').load(location.href + ' #reload');
+        });
     });
-})
+    
+    $('#add_friend').on('submit', function(e){
+        e.preventDefault();
+        
+        var receiverName = $('#receiverName').val();
+        
+        $.ajax({
+            url: '/group/'+room,
+            type: 'POST',
+            data: {
+                receiverName: receiverName
+            },
+            success: function(){
+                
+            }
+        });
+    });
+});
