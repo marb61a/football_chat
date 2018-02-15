@@ -71,7 +71,49 @@ module.exports = function(async, Users, Message, aws, formidable, FriendResult){
             FriendResult.PostRequest(req, res, '/settings/profile');
             
             async.waterfall([
+                function(callback){
+                    Users.findOne({'_id':req.user._id}, (err, result) => {
+                        callback(err, result);    
+                    });
+                },
                 
+                function(result, callback){
+                    if(req.body.upload === null || req.body.upload === ''){
+                        Users.update({
+                            '_id':req.user._id
+                        },
+                        {
+                            username: req.body.username,
+                            fullname: req.body.fullname,
+                            mantra: req.body.mantra,
+                            gender: req.body.gender,
+                            country: req.body.country,
+                            userImage: result.userImage
+                        },
+                        {
+                            upsert: true
+                        }, (err, result) => {
+                            res.redirect('/settings/profile');
+                        });
+                    } else if (req.body.upload !== null || req.body.upload !== ''){
+                        Users.update({
+                            '_id':req.user._id
+                        },
+                        {
+                            username: req.body.username,
+                            fullname: req.body.fullname,
+                            mantra: req.body.mantra,
+                            gender: req.body.gender,
+                            country: req.body.country,
+                            userImage: result.userImage
+                        },
+                        {
+                            upsert:true
+                        }, (err, result) => {
+                            res.redirect('/settings/profile');
+                        });
+                    }
+                } 
             ]);
         }
     }; 
