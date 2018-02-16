@@ -82,7 +82,31 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                 for(let i = 0; i < res1.length; i += chunkSize){
                     dataChunk.push(res1.slice(i, i+chunkSize));
                 }
+                
+                const countrySort = _.sortBy(res2, '_id');
+                res.render('home', {
+                    title: 'Sport Chat - Home', 
+                    user:req.user, 
+                    chunks: dataChunk, 
+                    country: countrySort, 
+                    data:res3, 
+                    chat:res4
+                });
+                
             });
+        },
+        
+        postHomePage: function(req, res){
+            async.parallel([
+                function(callback){
+                    Club.update({
+                        '_id':req.body.id,
+                        'fans.username': {$ne: req.user.username}
+                    },{
+                        
+                    })
+                }
+            ]);
         }
     }; 
 };
