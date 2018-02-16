@@ -103,8 +103,13 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                         '_id':req.body.id,
                         'fans.username': {$ne: req.user.username}
                     },{
-                        
-                    })
+                        $push: {fans: {
+                            username: req.user.username,
+                            email: req.user.email
+                        }}
+                    }, (err, count) => {
+                        callback(err, count);
+                    });
                 }
             ]);
         }

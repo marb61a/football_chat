@@ -37,10 +37,35 @@ module.exports = function(async, Users, Message, FriendResult){
                                 }
                             }, "body": {$first:"$$ROOT"}
                             }
+                        }, function(err, newResult){
+                            const arr = [
+                                {path: 'body.sender', model: 'User'},
+                                {path: 'body.receiver', model: 'User'}
+                            ];
+                            
+                            Message.populate(newResult, arr, (err, newResult1) => {
+                                callback(err, newResult1);
+                            });
                         }
-                    )
+                    );
+                },
+                
+                function(callback){
+                    Message.find({'$or':[{'senderName':req.user.username}, {'receiverName':req.user.username}]})
+                        .populate('sender')
+                        .populate('receiver')
+                        .exec((err, result3) => {
+                            callback(err, result3)
+                        })
                 }
-            ]);    
+            ], (err, results) => {
+                const result1 = results[0];
+                const result2 = results[1];
+                const result3 = results[2];
+                
+                const params = req.params.name.split('.');
+                const nameParams = params[0];
+            });    
         }
     };  
 };
