@@ -50,3 +50,48 @@ h3 {
     color: #fff !important;
     background-color: #4aa1f3;
 }
+
+.dropdown-toggle:active, .open .dropdown-toggle {
+    background:#4aa1f3 !important; 
+    border: none !important;
+    color:#000 !important;
+}
+
+.margin-80 {
+    margin-bottom: 80px;
+}
+
+.new_message_head button {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    outline: 0;
+    font-size: 17px;
+    color: #4aa1f3;
+}
+
+.new_message_head button:focus {
+	outline: 0 !important;
+}
+
+.new_message_head {
+    background: white none repeat scroll 0 0;
+    float: left;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 18px 10px;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.32);
+}
+
+.message_section {
+    border: 1px solid #dddddd;
+}
+
+.chat_area {
+    background: white;
+    float: left;
+    height: 360px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
