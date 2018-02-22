@@ -32,10 +32,49 @@
         </nav>
         <div class="col-md-12">
             <form action="#" method="post">
-                <div>
-                    
+                <div class="form-group ad-30" style="margin-top:8px;">
+                    <div class="input-group search-style">
+                        <input class="form-control new-search-bar"  name="country" id="search" placeholder="Enter Your Club Name" type="text">
+                        <span class="input-group-btn">
+                            <button class="btn input-btn" type="" id="search-form">Search</button>
+                        </span>
+                    </div>
                 </div>
             </form>
         </div>
+        
+        <div class="col-md-12">
+            <input type="hidden" id="name-user" value="<%= user.username %>">
+           <input type="hidden" id="name-image" value="<%= user.userImage %>">
+           <div class="">
+               <div class="row">
+                   <div class="col-md-3">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="filter-container">
+                                    <div class="card">
+                                        <form action="/results" method="post">
+                                            <div class="content">
+                                                <p class="filter">
+                                                    FILTER
+                                                </p>
+                                                <hr/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>        
+                        </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script> 
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/group/sendrequest.js"></script> 
+        <script src="/js/home.js"></script>
+        <script src="/js/global.js"></script>
     </body>
 </html>
