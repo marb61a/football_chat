@@ -26,11 +26,50 @@
                         <li><a href="/latest-football-news">Football News</a></li>
                         <li><a href="/members">Members</a></li>
                         <li class="dropdown">
-                            
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <%= user.username %> 
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/settings/profile"><span class="fa fa-user"> Profile</span></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        
+        <div class="col-md-12">
+            <form action="/members" method="post">
+                <div class="form-group ad-30" style="margin-top:8px;">
+                    <div class="input-group search-style">
+                        <input class="form-control new-search-bar"  name="username" id="" placeholder="Enter Username" type="text">
+                        <span class="input-group-btn">
+                            <button class="btn input-btn" type="" id="search-form">Search</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-md-12">
+            <input type="hidden" id="name-user" value="<%= user.username %>">
+            <input type="hidden" id="name-image" value="<%= user.userImage %>">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script> 
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/group/sendrequest.js"></script> 
+        <script src="/js/home.js"></script>
+        <script src="/js/global.js"></script>
     </body>
 </html>
