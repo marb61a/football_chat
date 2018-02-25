@@ -115,6 +115,36 @@ module.exports = function(async, Users, Message, aws, formidable, FriendResult){
                     }
                 } 
             ]);
+        },
+        
+        userUpload: function(req, res){
+            const form = new formidable.IncomingForm();
+            
+            form.on('file', (field, file) => {});
+            form.on('error', (err) => {});
+            form.on('end', () => {});
+            
+            form.parse(req);
+        },
+        
+        overviewPage: function(req, res){
+            async.parallel([
+                function(callback){
+                    Users.findOne({'username': req.params.name})
+                        .populate('request.userId')
+                        .exec((err, result) => {
+                            callback(err, result);
+                        });
+                },
+                
+                function(callback){
+                    const nameRegex = new RegExp("^" + req.user.username.toLowerCase(), "i")
+                    
+                    Message.aggregate(
+                        {$match:{$or:[{"senderName":nameRegex}, {"receiverName":nameRegex}]}},
+                    );
+                }
+            ]);
         }
     }; 
 };
