@@ -65,7 +65,31 @@ module.exports = function(async, Users, Message, FriendResult){
                 
                 const params = req.params.name.split('.');
                 const nameParams = params[0];
+                
+                res.render('private/privatechat', 
+                    {title: 'Sport Chat - Private Chat', 
+                    user:req.user, 
+                    data: result1, 
+                    chat: result2, 
+                    chats:result3, 
+                    name:nameParams});
             });    
+        },
+        
+        chatPostPage: function(req, res, next){
+            const params = req.params.name.split('.');
+            const nameParams = params[0];
+            const nameRegex = new RegExp("^"+nameParams.toLowerCase(), "i");
+            
+            async.waterfall([
+                function(callback){
+                    if(req.body.message){
+                        Users.findOne({'username':{$regex: nameRegex}}, (err, data) => {
+                            callback(err, data);
+                        });
+                    }
+                }    
+            ]);
         }
     };  
 };
