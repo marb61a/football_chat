@@ -59,12 +59,57 @@
                                                     FILTER
                                                 </p>
                                                 <hr/>
+                                                <select class="form-control" name="country" id="country">
+                                                    <option value="">Filter By Country</option>
+                                                </select>
+                                                <div class="clearfix"></div>
+                                                <button class="btn add-apply">Apply</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>        
                         </div>
+                   </div>
+                   <div class="col-md-9">
+                       <div>
+                           <% _.forEach(chunks, function(val) { %>
+                               <div class="category-list">
+                                   <div class="row">
+                                       <% _.forEach(val, function(val2) { %>
+                                           <form action="/home" method="post" id="favorite">
+                                               <div class="item col-md-4">
+                                                   <a style="text-decoration:none" href="/group/<%= val2.name %>">
+                                                       <div class="thumbnail">
+                                                           <img src="" alt="">
+                                                           <div class="caption">
+                                                               <h4>
+                                                                   <%= val2.name %> (<%= val2.fans.length %>)
+                                                               </h4>
+                                                               <div class="row">
+                                                                   <div class="col-xs-12 col-md-6">
+                                                                       <p>
+                                                                           <%= val2.country %>
+                                                                       </p>
+                                                                   </div>
+                                                                   <div class="col-xs-12 col-md-6">
+                                                                       <input type="hidden" name="id" id="id" value="<%= val2._id %>">
+                                                                        <input type="hidden" name="clubName" id="club_Name" value="<%= val2.name %>">
+                                                                        <button class="btn add-fav">
+                                                                            Add To Favorite
+                                                                        </button>
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   </a>
+                                               </div>
+                                           </form>
+                                       <% })%>
+                                   </div>
+                               </div>
+                           <% }) %>
+                       </div>
                    </div>
                </div>
            </div>
