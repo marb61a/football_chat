@@ -25,6 +25,18 @@
                                         <div class="user cover-img">
                                             <img src="" class="img-circle" alt="">
                                         </div>
+                                        <div class="content">
+                                            <div class="main">
+                                                <h3 class="name"><%= _.upperFirst(user.username) %></h3>
+                                                <p class="profession-online">
+                                                    <i class="fa fa-circle online" aria-hidden="true"></i>
+                                                    Online
+                                                </p>
+                                                <p class="text-center">
+                                                    <%= user.mantra %>    
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -33,5 +45,15 @@
                 </div>
             </div>
         </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script> 
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/privatechat/pm.js"></script>
+        <script src="/js/messagelink.js"></script>
+        <script src="/js/group/sendrequest.js"></script>
+        <script src="/js/global.js"></script>
+        <script src="/js/deparam.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
     </body>
 </html>

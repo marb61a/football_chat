@@ -26,7 +26,14 @@
                     <ul class="nav navbar-nav navbar-right" id="reload">
                         <li><a href="/members">Members</a></li>
                         <li class="dropdown">
-                            
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+                                ><%= user.username %> <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/settings/profile"><span class="fa fa-user"> Profile</span></a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout"><span class="fa fa-sign-out"></span> Logout</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -39,6 +46,25 @@
             <div class="col-md-12">
                 <h1 class="news-mainhead">Latest News</h1>
             </div>
+            
+            <div class="col-md-12 col-sm-12 news-bottom" id="newsResults"></div>
+   
+            <div class="col-md-12">
+            <button id="loadMore" class="btn col-xs-12 n-hide-screen-large">Load More</button>
+            
+            <p id="top">
+                <a href="#top" id="linkTop">Back to top</a>
+            </p>
+            
+            </div>
         </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script> 
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/group/sendrequest.js"></script> 
+        <script src="/js/home.js"></script>
+        <script src="/js/global.js"></script>
+        <script src="/js/news/footballnews.js"></script>
     </body>
 </html>
