@@ -100,7 +100,14 @@ module.exports = function(async, Users, Message){
                 function(callback){
                     if(req.body.user_Id){
                         Users.update({
-                            
+                            '_id': req.body.user_Id,
+                            'sentRequest.username': {$eq: req.user.username}
+                        }, {
+                            $pull: {sentRequest: {
+                                username: req.user.username
+                            }}
+                        }, (err, count) => {
+                            callback(err, count);
                         });
                     }
                 }
