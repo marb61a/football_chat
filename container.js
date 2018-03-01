@@ -5,7 +5,14 @@ const container = dependable.container();
 
 const simpleDependecies = [
     ['_', 'lodash'],
-    ['Users', './models/user']
+    ['passport', 'passport'],
+    ['formidable', 'formidable'],
+    ['async', 'async'], 
+    ['Club', './models/clubs'],
+    ['Users', './models/user'],
+    ['Message', './models/message'],
+    ['Group', './models/groupmessage'],
+    ['aws', './helpers/AWSUpload']
 ];
 
 simpleDependecies.forEach(function(val){
