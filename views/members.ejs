@@ -59,7 +59,32 @@
             <div class="">
                 <div class="row">
                     <div class="col-md-12">
-                        
+                        <div>
+                            <% _.forEach(chunks, function(val) { %>
+                                <div class="category-list">
+                                    <div class="row">
+                                        <% _.forEach(val, function(val2) { %>
+                                            <form action="/home" method="post" id="favorite">
+                                                <div class="item col-md-3">
+                                                    <a style="text-decoration:none" href="#">
+                                                        <div class="thumbnail thumb_nail">
+                                                            <img src="" class="">
+                                                            <div class="caption">
+                                                                <div class="row">
+                                                                    <div class="col-xs-12 col-md-12">
+                                                                        <h4 style="color:#4aa1f3;"><%= val2.username %></h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </form>
+                                        <% }) %>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>    
                     </div>
                 </div>
             </div>
