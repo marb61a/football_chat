@@ -36,12 +36,45 @@
                                                     <%= user.mantra %>    
                                                 </p>
                                             </div>
+                                            <div class="footer">
+                                                <i class="fa fa-mail-forward"></i>
+                                                <a style="text-decoration:none; color:#4aa1f3" href="/profile/<%= user.username %>">
+                                                    View My Profile
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-md-12">
+                            <div class="card-container">
+                                <div class="card">
+                                    <div class="front">
+                                        <div class="content main-scroll">
+                                            <div class="main" id="main-scroll">
+                                                <p class="friends" style="margin-bottom:0px;">
+                                                    Online Friends <span id="numOfFriends"></span>
+                                                </p>
+                                                <hr style="margin-top:10px" />
+                                                <% if(data.friendsList.length > 0) { %>
+                                                    <% _.forEach(data.friendsList, function(value) { %>
+                                                        <div class="friend" hidden>@<%= value.friendName %></div>
+                                                    <% }) %>
+                                                <% } %>
+                                                <div class="onlineFriends"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    
                 </div>
             </div>
         </div>
