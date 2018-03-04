@@ -66,9 +66,41 @@ module.exports = function(async, Users, Message, FriendResult){
             
             async.parallel([
                 function(callback){
-                    
+                    if(req.body.favClub){
+                        Users.update({
+                            '_id':req.user._id,
+                           'favClub.clubName': {$ne: req.body.favClub}
+                        }, {
+                            $push:{favClub:{
+                                clubName: req.body.favClub
+                            }}
+                        }, (err, result1) => {
+                            callback(err, result1);
+                        });
+                    }
                 }
-            ]);
+            ], (err, results) => {
+                res.redirect('/settings/interests');
+            });
+            
+            async.parallel([
+                function(callback){
+                    if(req.body.favPlayer){
+                        Users.update({
+                            '_id':req.user._id,
+                           'favPlayer.playerName': {$ne: req.body.favPlayer}
+                        }, {
+                            $push: {favPlayer: {
+                                playerName: req.body.favPlayer
+                            }} 
+                        }, (err, result2) => {
+                            callback(err, result2);
+                        });
+                    }
+                }    
+            ], (err, results) => {
+                res.redirect('/settings/interests');
+            });
         }
     };    
 };
