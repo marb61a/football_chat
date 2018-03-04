@@ -111,7 +111,18 @@ module.exports = function(async, Club, _, Users, Message, FriendResult){
                         callback(err, count);
                     });
                 }
-            ]);
+            ], (err, results) => {
+                res.redirect('/home');
+            });
+            
+            FriendResult.PostRequest(req, res, '/home');
+        },
+        
+        logout: function(req, res){
+            req.logout();
+            req.session.destroy((err) => {
+               res.redirect('/');
+            });
         }
     }; 
 };

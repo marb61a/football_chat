@@ -84,9 +84,28 @@ module.exports = function(Users, async, Message, FriendResult, Group){
             
             async.parallel([
                 function(callback){
-                    
+                    if(req.body.message){
+                        const group = new Group();
+                        group.sender = req.user._id;
+                        group.body = req.body.message;
+                        group.name = req.body.groupName;
+                        group.createdAt = new Date();
+                        
+                        group.save((err, msg) => {
+                            callback(err, msg);
+                        });
+                    }
                 }
-            ]);
+            ], (err, results) => {
+                res.redirect('/group/'+req.params.name);
+            });
+        },
+        
+        logout: function(req, res){
+            req.logout();
+            req.session.destroy((err) => {
+               res.redirect('/');
+            });
         }
     }; 
 };
