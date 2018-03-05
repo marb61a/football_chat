@@ -88,8 +88,33 @@ module.exports = function(async, Users, Message, FriendResult){
                             callback(err, data);
                         });
                     }
-                }    
-            ]);
+                },
+                
+                function(data, callback){
+                    if(req.body.message){
+                        const newMessage = new Message();
+                        newMessage.sender = req.user._id;
+                        newMessage.receiver = data._id;
+                        newMessage.senderName = req.user.username;
+                        newMessage.receiverName = data.username;
+                        newMessage.message = req.body.message;
+                        newMessage.userImage = req.user.UserImage;
+                        newMessage.createdAt = new Date();
+                        
+                        newMessage.save((err, result) => {
+                            if(err){
+                                return next(err);
+                            }
+                            
+                            callback(err, result);
+                        });
+                    }
+                }
+            ], (err, results) => {
+                res.redirect('/chat/'+req.params.name);
+            });
+            
+            FriendResult.PostRequest(req, res, '/chat/'+req.params.name);
         }
     };  
 };
