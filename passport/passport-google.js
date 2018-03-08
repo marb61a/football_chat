@@ -24,5 +24,22 @@ passport.use(new GoogleStrategy({
         if(err){
             return done(err);
         }    
+        
+        if(user){
+            return done(null, user);
+        } else {
+            const newUser = new User();
+            newUser.google = profile.displayName;
+            newUser.username = profile.displayName;
+            newUser.email = profile.emails[0].value;
+            newUser.userImage = profile._json.image.url;
+            
+            newUser.save((err) => {
+                if(err){
+                    return done(err);
+                }
+                return done(null, newUser);
+            });
+        }
     });
 }));

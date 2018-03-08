@@ -101,6 +101,26 @@ module.exports = function(async, Users, Message, FriendResult){
             ], (err, results) => {
                 res.redirect('/settings/interests');
             });
+            
+            async.parallel([
+                function(callback){
+                    if(req.body.nationalTeam){
+                        Users.update({
+                           '_id':req.user._id,
+                           'favNationalTeam.teamName': {$ne: req.body.nationalTeam}
+                       },
+                       {
+                            $push: {favNationalTeam: {
+                                teamName: req.body.nationalTeam
+                            }}    
+                       }, (err, result3) => {
+                           callback(err, result3);
+                       });
+                    }
+                }    
+            ], (err, results) => {
+                res.redirect('/settings/interests');
+            });
         }
     };    
 };
