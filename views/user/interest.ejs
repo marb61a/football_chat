@@ -92,6 +92,48 @@
                                     <div class="user-display">
                                         <h3 class="user-display-head" style="color:#4aa1f3 !important">Favourite Players</h3>
                                         <hr />    
+                                        <% _.forEach(user.favPlayer, function(val) { %>
+                                            <p style="margin-bottom:30px; color:#4aa1f3">
+                                                <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                                <%= val.playerName %>
+                                            </p>
+                                        <% }) %>
+                                        <div class="form-group ad-30" style="margin-top:18px;">
+                                            <div class="input-group">
+                                                <input id="favPlayer" class="form-control add-items" name="favPlayer" type="text" style="">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default add-items-btn" id="favPlayerBtn" 
+                                                        style="font-weight:bold; background-color:#4aa1f3; color: #fff">
+                                                        Add Player
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:20px">
+                                    <div class="user-display">
+                                        <h3 class="user-display-head" style="color:#4aa1f3 !important">
+                                            Favourite National Teams
+                                        </h3>   
+                                        <hr />
+                                        <% _.forEach(user.favNationalTeam, function(val) { %>
+                                            <p style="margin-bottom:30px; color:#4aa1f3">
+                                                <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                                <%= val.teamName %>
+                                            </p>
+                                        <% }) %>
+                                        <div class="form-group ad-30" style="margin-top:18px;">
+                                            <div class="input-group">
+                                                <input id="nationalTeam" class="form-control add-items" name="nationalTeam" type="text" style="">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default add-items-btn" id="nationalTeamBtn" 
+                                                        style="font-weight:bold; background-color:#4aa1f3; color: #fff">
+                                                        Add Team
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -101,6 +143,7 @@
             </div>
         </div>
     </body>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"  crossorigin="anonymous"></script> 
     <script src="/socket.io/socket.io.js"></script>
