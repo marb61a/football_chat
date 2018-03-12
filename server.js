@@ -10,8 +10,8 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const socketIO = require('socket.io');
-const {Users} = require('./helpers/UsersClass');
-const {Global} = require('./helpers/Global');
+const Users = require('./helpers/UsersClass');
+const Global = require('./helpers/Global');
 const compression = require('compression');
 const helmet = require('helmet');
 

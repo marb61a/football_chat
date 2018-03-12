@@ -1,3 +1,5 @@
+'use strict';
+
 class Global {
     constructor(){
         this.globalRoom = [];

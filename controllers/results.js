@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(async, Club, Users){
     return {
         SetRouting: function(router){

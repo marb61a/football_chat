@@ -1,3 +1,5 @@
+'use strict';
+
 class Users {
     constructor(){
         this.users = [];
