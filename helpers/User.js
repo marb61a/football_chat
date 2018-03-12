@@ -34,11 +34,14 @@ module.exports = function(){
             
             req.getValidationResult()
                 .then((result) => {
-                   const errors = result.array();
-                   const messages = [];
-                   errors.forEach((error) => {
+                    const errors = result.array();
+                    const messages = [];
+                    errors.forEach((error) => {
                        messages.push(error.msg);
-                   });
+                    });
+                   
+                    req.flash('error', messages);
+                    res.redirect('/');
                 })
                 .catch((err) => {
                     return next();

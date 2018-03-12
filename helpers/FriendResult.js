@@ -110,8 +110,23 @@ module.exports = function(async, Users, Message){
                             callback(err, count);
                         });
                     }
+                },
+                
+                function(callback){
+                    if(req.body.chatId){
+                        Message.update({
+                            '_id': req.body.chatId
+                        },
+                        {
+                            "isRead": true
+                        }, (err, done) => {
+                            callback(err, done);
+                        });
+                    }
                 }
-            ]);
+            ], (err, results) => {
+                res.redirect(url);
+            });
         }    
     };
 };
