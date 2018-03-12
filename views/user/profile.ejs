@@ -104,6 +104,25 @@
                                         <input type="radio" name="gender" value="Female" id="gender" />
                                         Female
                                     </label>
+                                    <div class="" style="margin-top:20px">
+                                        <label style="color:#4aa1f3 !important">Mantra</label><br>
+                                        <textarea name="mantra" id="mantra" class="form-control input-lg" rows="5" placeholder="A one liner sentence">
+                                            <%= user.mantra %>
+                                        </textarea>
+                                    </div>
+                                    <div>
+                                        <label style="color:#4aa1f3 !important">Add Profile Photo</label><br>
+                                        <input type="hidden" id="user-image" value="<%= user.userImage %>">
+                                        <button class="btn btn-lg add-btn" style="background-color:#4aa1f3 !important; color:white" type="button">
+                                            Add Profile Image
+                                        </button>
+                                        <input type="file" class="form-control" name="upload" id="add-input" style="display: none">
+                                        <span id="completed"></span>
+                                    </div>
+                                    <input type="submit" id="profile" value="SAVE PROFILE" 
+                                    class="btn btn-lg btn-default btn-block save-profile-btn" name="submit" 
+                                    style="background-color:#4aa1f3 !important; color:white !important">
+                                    
                                 </form>
                             </div>
                         </div>

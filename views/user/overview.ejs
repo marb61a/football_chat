@@ -84,7 +84,16 @@
                                 </div>
                                 <div style="margin-top:20px">
                                     <div class="user-display">
-                                        
+                                        <h3 class="user-display-head" style="color:#4aa1f3 !important">
+                                            Favourite National Teams
+                                        </h3>
+                                        <hr />
+                                         <% _.forEach(data.favNationalTeam, function(val) {%>
+                                            <p style="margin-bottom:30px; color:#4aa1f3">
+                                                <span class="glyphicon glyphicon-check" style="color:gray"></span>
+                                                <%= val.teamName %>
+                                            </p>
+                                        <% }) %>
                                     </div>
                                 </div>
                             </form>
