@@ -10,16 +10,20 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const passport = require('passport');
 const socketIO = require('socket.io');
-const Users = require('./helpers/UsersClass');
-const Global = require('./helpers/Global');
+const { Users } = require('./helpers/UsersClass');
+const { Global } = require('./helpers/Global');
 const compression = require('compression');
 const helmet = require('helmet');
 
-const container = require("./container");
+
+const container = require('./container');
+
+
 
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
+    
     mongoose.Promise = global.Promise;
-    mongoose.connect("");
+    mongoose.connect('mongodb://localhost/footballkik', {useMongoClient: true});
     
     const app = SetupExpress();
     
@@ -37,7 +41,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         require('./socket/globalroom')(io, Global, _);
         require('./socket/privatemessage')(io);
         
-        // Setup the router
+        //Setup router
         const router = require('express-promise-router')();
         users.SetRouting(router);
         admin.SetRouting(router);
@@ -48,20 +52,27 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         profile.SetRouting(router);
         interests.SetRouting(router);
         news.SetRouting(router);
-        
+
         app.use(router);
+        
         app.use(function(req, res){
             res.render('404');
         });
     }
     
+    
+    
     function ConfigureExpress(app){
+        
         app.use(compression());
         app.use(helmet());
+        
         
         require('./passport/passport-local');
         require('./passport/passport-facebook');
         require('./passport/passport-google');
+        
+        
         
         app.use(express.static('public'));
         app.use(cookieParser());
@@ -84,5 +95,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(passport.session());
         
         app.locals._ = _;
+        
     }
+    
 });

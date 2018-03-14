@@ -1,5 +1,5 @@
 module.exports = function(io, Users){
-    const users = new Users;
+    const users = new Users();
     
     io.on('connection', (socket) => {
         socket.on('join', (params, callback) => {
