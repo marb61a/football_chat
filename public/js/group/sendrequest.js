@@ -66,8 +66,49 @@ $(document).ready(function(){
                 receiverName: receiverName
             },
             success: function(){
-                
+                socket.emit('friendRequest', {
+                    receiverName: receiverName,
+                    sender: sender
+                }, function(){
+                    console.log('Request Sent');
+                });
             }
         });
+    });
+    
+    $('#accept_friend').on('click', function(){
+        var senderId = $('#senderId').val();
+        var senderName = $('#senderName').val();
+        
+        $.ajax({
+            url: '/group/'+room,
+            type: 'POST',
+            data: {
+                senderId: senderId,
+                senderName: senderName
+            },
+            success: function(){
+                $(this).parent().eq(1).remove();
+            }
+        });
+        
+        $('#reload').load(location.href + ' #reload');
+    });
+    
+    $('#cancel_friend').on('click', function(){
+        var user_Id = $('#user_Id').val();
+        
+        $.ajax({
+            url: '/group/'+room,
+            type: 'POST',
+            data: {
+                user_Id: user_Id
+            },
+            success: function(){
+                $(this).parent().eq(1).remove();
+            }
+        });
+        
+        $('#reload').load(location.href + ' #reload');
     });
 });
