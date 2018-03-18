@@ -102,3 +102,46 @@ form h1 span {
     background: #0184ff;
 }
 
+label {
+    color: #858585;
+    display: block;
+    font-size: 13px;
+}
+
+input[type=text],
+input[type=password],
+.select {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    padding: 8px 5px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.1);
+    margin-bottom: 20px;
+    color: #858585;
+    font-size: 15px;
+    outline: none;
+    background-color: #fbfbfb;
+    border: 1px solid #d5d5d5;
+    font-family: inherit;
+    -webkit-transition: -webkit-box-shadow .45s, border-color .45s ease-in-out;
+    -moz-transition: -moz-box-shadow .45s, border-color .45s ease-in-out;
+    -o-transition: box-shadow .45s, border-color .45s ease-in-out;
+    transition: box-shadow .45s, border-color .45s ease-in-out;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none
+}
+
+.remember{
+    color: #858585;
+    font-size: 14px;
+    display: inline-block;
+    vertical-align: middle !important;
+    font-weight: normal !important;
+}
+
+input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
