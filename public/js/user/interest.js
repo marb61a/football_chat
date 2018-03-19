@@ -62,4 +62,16 @@ $(document).ready(function(){
         }
     });
     
+    $('#nationalTeamBtn').on('click', function() {
+        var nationalTeam = $('#nationalTeam').val();
+        var valid = true;
+        
+        if(nationalTeam == ''){
+            valid = false;
+            $('#error').html('<div class="alert alert-danger">You cannot submit an empty field</div>');
+        } else {
+            $('#error').html('');
+        }
+        
+    });
 })

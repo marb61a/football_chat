@@ -54,6 +54,21 @@ $(document).ready(function(){
         }
     });
     
+    $('#send_message').on('click', function(){
+        var message = $('#msg').val();
+        
+        $.ajax({
+            url:'/chat/'+paramOne,
+            type: 'POST',
+            data: {
+                message: message
+            },
+            success: function(){
+                $('#msg').val('');
+            }
+        });
+    });
+    
 });
 
 function swap(input, value_1, value_2){
