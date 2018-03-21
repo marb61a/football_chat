@@ -73,5 +73,23 @@ $(document).ready(function(){
             $('#error').html('');
         }
         
+        if(valid == true){
+            $.ajax({
+                url: '/settings/interests',
+                type: 'POST',
+                data: {
+                    nationalTeam: nationalTeam
+                },
+                success: function(){
+                    $('#nationalTeam').val('');
+                    setTimeout(function(){
+                        window.location.reload();    
+                    }, 200);
+                }
+            });    
+        } else {
+            return false;
+        }
+        
     });
 })
