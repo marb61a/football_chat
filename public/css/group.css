@@ -245,3 +245,55 @@ member_list li:hover {
     margin-bottom: 20px;
     margin-top: 5px;
 }
+
+.online {
+    font-size: 10px;
+    color: rgba(129, 191, 57, 0.95);
+    position: relative;
+    top: -2px;
+}
+
+.card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    margin: 30px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+}
+
+.main-scroll {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.online_friend {
+    font-size: 10px;
+    color: rgba(129, 191, 57, 0.95);
+    position: relative;
+    float: right;
+}
+
+.name, .friends, #numOfFriends, .club_name, .club_fans{
+    color: #4aa1f3 !important;
+}
+
+.bl {
+    color: #03a9f4;
+    font-weight: 500;
+}
+
+.gr-rightsidebar {
+    padding-top: 15px;
+    background: white;
+    float: left;
+    height: 506px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    border-left: 1px solid rgba(128, 128, 128, 0.32);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.32);
+    border-right: 1px solid rgba(128, 128, 128, 0.32);
+}
+
+
