@@ -349,3 +349,79 @@ member_list li:hover {
     position: relative;
     top: 2px;
 }
+
+.dropdown-tag-head {
+    color: white;
+    padding-top: 7px;
+    margin-top: 0px;
+    font-size: 17px;
+}
+
+.dmenu {
+    padding-top: 0px !important;
+}
+
+.dropdown-tag {
+    background: #03A9F4;
+    color: white;
+    padding: 4px;
+    margin-bottom: 15px;
+}
+
+.navbar-login {
+    width: 305px;
+    padding-bottom: 30px;
+    padding-top: 0px;
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.drop-name {
+    margin-bottom: 0px;
+}
+
+.dropdown-divider {
+    margin-top: 5px !important;
+    margin-bottom: 14px !important;
+}
+
+.drop-accept {
+    background: #4aa1f3 !important;
+    border: #3bb5ec;
+    color: white !important;
+    text-shadow: none;
+}
+
+#reload{
+    padding: 0px 15px 0px 15px;
+}
+
+.cover-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.cover-img img{
+    min-height: 100%;
+    min-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.dropdown-img{
+    width: 40px;
+    height: 40px;
+}
+

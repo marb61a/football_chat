@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 class Users {
     constructor(){
@@ -23,6 +23,7 @@ class Users {
         var getUser = this.users.filter((userId) => {
             return userId.id === id;
         })[0];
+        return getUser;
     }
     
     GetUsersList(room){
